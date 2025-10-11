@@ -1,13 +1,15 @@
 public class Producto {
 
-  String nombre;
-  int id;
-  double precio;
-  int stock;
+  private String nombre;
+  private int id;
+  private double precio;
+  private int stock;
+  private static int contador = 0;
+
 
   public Producto ( String nombre , int id , double precio , int stock ) {
     this.nombre = nombre;
-    this.id = id;
+    this.id = ++contador;
     this.precio = precio;
     this.stock = stock;
   }

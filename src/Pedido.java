@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Pedido {
-  int id;
-  ArrayList<Producto> productos;
+  private int id;
+  private ArrayList<Producto> productos;
 
   public Pedido(int id, ArrayList<Producto> productos) {
     this.id = id;
@@ -18,7 +18,7 @@ public class Pedido {
     }
     return total;
   }
-  public int disminutirStock(int idProducto, int cantidad) {
+  public int disminuirStock(int idProducto, int cantidad) {
     for (Producto producto : productos) {
       if (producto.getId() == idProducto) {
         int stockActual = producto.getStock();
