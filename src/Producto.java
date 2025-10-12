@@ -1,13 +1,13 @@
 public class Producto {
 
   private String nombre;
-  private int id;
+  private final int id;
   private double precio;
   private int stock;
   private static int contador = 0;
 
 
-  public Producto ( String nombre , int id , double precio , int stock ) {
+  public Producto ( String nombre  , double precio , int stock ) {
     this.nombre = nombre;
     this.id = ++contador;
     this.precio = precio;
@@ -29,9 +29,6 @@ public class Producto {
   /*setters*/
   public void setNombre(String nombre){
     this.nombre = nombre;
-  }
-  public void setId(int id) {
-    this.id = id;
   }
 
   public void setPrecio(double precio) {
