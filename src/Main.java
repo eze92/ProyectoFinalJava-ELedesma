@@ -27,8 +27,8 @@ public class Main {
       switch (opcionUsuario) {
         case 1 -> crearProducto(productosDB); // - >
         case 2 -> listarProductos(productosDB);
-        /*case 3 -> buscarProductoPorNombre(productosDB);
-        case 4 -> editarProducto(productosDB);
+        case 3 -> buscarProductoPorNombre(productosDB);
+        /*case 4 -> editarProducto(productosDB);
         case 5 -> borrarProducto(productosDB);
         case 6 -> System.out.println("Funcionalida en progreso...");*/
         case 0 -> {
@@ -73,10 +73,24 @@ public class Main {
         System.out.printf(" %2d. %s%n", contador++, producto.getNombre());
       }
     }
-
     System.out.println("=======================================");
     pausa();
   }
+
+  public static void buscarProductoPorNombre(ArrayList<Producto> productos) {
+    Scanner entrada = new Scanner(System.in);
+    System.out.println("Ingrese un nombre de un producto: ");
+    String busqueda = entrada.nextLine();
+    ArrayList<Producto> productoEncontrados = new ArrayList<>();
+
+    for (Producto producto : productos) {
+      if (estaIncluido(producto, busqueda)) {
+        productoEncontrados.add(producto);
+      }
+    }
+    listarProductos(productoEncontrados);
+  }
+
 
 
 
@@ -106,4 +120,13 @@ public class Main {
     // TODO: limpiar la pantalla de la consola
   }
 
+  public static boolean estaIncluido(Producto producto, String nombreParcial) {
+    String nombreCompletoFormateado = formatoBusqueda(producto.getNombre());
+
+    return nombreCompletoFormateado.contains(formatoBusqueda(nombreParcial));
   }
+  public static String formatoBusqueda(String texto) {
+    return texto.trim().toLowerCase();
+  }
+
+}
