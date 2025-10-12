@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -28,8 +29,8 @@ public class Main {
         case 1 -> crearProducto(productosDB); // - >
         case 2 -> listarProductos(productosDB);
         case 3 -> buscarProductoPorNombre(productosDB);
-        /*case 4 -> editarProducto(productosDB);
-        case 5 -> borrarProducto(productosDB);
+        case 4 -> editarProducto(productosDB);
+       /* case 5 -> borrarProducto(productosDB);
         case 6 -> System.out.println("Funcionalida en progreso...");*/
         case 0 -> {
           System.out.println("Gracias por usar la app!");
@@ -91,10 +92,35 @@ public class Main {
     listarProductos(productoEncontrados);
   }
 
+  public static void editarProducto(List<Producto> productos) {
+      Scanner entrada = new Scanner(System.in);
+      System.out.print("Ingrese el nombre o parte del nombre del producto a editar: ");
+      int idProducto = obtenerIdProducto(productos);
+
+      Producto productoAEditar = null;
+      for (Producto producto : productos) {
+        if (producto.getId() == idProducto) {
+          productoAEditar = producto;
+          break;
+        }
+      }
+
+      if (productoAEditar == null) {
+        System.out.println("❌ Producto no encontrado.");
+        return;
+      }
+
+      System.out.println("Producto a editar: " + productoAEditar.getNombre());
+      System.out.print("Ingrese el nuevo nombre: ");
+      String nuevoNombre = entrada.nextLine();
+
+      productoAEditar.setNombre(nuevoNombre);
+
+      System.out.printf("El nombre del producto cambió de %s a %s%n", productoAEditar.getNombre(), nuevoNombre);
+    }
 
 
-
-  public static ArrayList<Producto> obtenerProductosTecnologicos() {
+    public static ArrayList<Producto> obtenerProductosTecnologicos() {
     ArrayList<Producto> productos = new ArrayList<>();
 
     productos.add(new Producto("Laptop Lenovo ThinkPad X1 Carbon", 1000.0, 10));
@@ -122,11 +148,24 @@ public class Main {
 
   public static boolean estaIncluido(Producto producto, String nombreParcial) {
     String nombreCompletoFormateado = formatoBusqueda(producto.getNombre());
-
     return nombreCompletoFormateado.contains(formatoBusqueda(nombreParcial));
   }
   public static String formatoBusqueda(String texto) {
     return texto.trim().toLowerCase();
   }
 
+  /* Busqueda por id */
+  public static int obtenerIdProducto(List<Producto> productos) {
+    Scanner entrada = new Scanner(System.in);
+    int idProducto = -1; // el -1 representa que no encontramos el producto
+    String busqueda = entrada.nextLine();
+
+    for (Producto producto : productos) {
+      if (estaIncluido(producto, busqueda)) {
+        return producto.getId();
+      }
+    }
+
+    return idProducto;
+  }
 }
