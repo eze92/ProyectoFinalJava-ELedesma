@@ -30,8 +30,8 @@ public class Main {
         case 2 -> listarProductos(productosDB);
         case 3 -> buscarProductoPorNombre(productosDB);
         case 4 -> editarProducto(productosDB);
-       /* case 5 -> borrarProducto(productosDB);
-        case 6 -> System.out.println("Funcionalida en progreso...");*/
+        case 5 -> borrarProducto(productosDB);
+        /*case 6 -> System.out.println("Funcionalida en progreso...");*/
         case 0 -> {
           System.out.println("Gracias por usar la app!");
           break label; // corta el bucle donde se ejecuta
@@ -92,7 +92,7 @@ public class Main {
     listarProductos(productoEncontrados);
   }
 
-  public static void editarProducto(List<Producto> productos) {
+  public static void editarProducto(ArrayList<Producto> productos) {
       Scanner entrada = new Scanner(System.in);
       System.out.print("Ingrese el nombre o parte del nombre del producto a editar: ");
       int idProducto = obtenerIdProducto(productos);
@@ -118,6 +118,30 @@ public class Main {
 
       System.out.printf("El nombre del producto cambió de %s a %s%n", productoAEditar.getNombre(), nuevoNombre);
     }
+
+  public static void borrarProducto(ArrayList<Producto> productos) {
+    Scanner entrada = new Scanner(System.in);
+    System.out.print("Ingrese el nombre o parte del nombre del producto a eliminar: ");
+    int idProducto = obtenerIdProducto(productos);
+
+    Producto productoAEliminar = null;
+    for (Producto producto : productos) {
+      if (producto.getId() == idProducto) {
+        productoAEliminar = producto;
+        break;
+      }
+    }
+    if (productoAEliminar == null) {
+      System.out.println("❌ Producto no encontrado.");
+      return;
+    }
+
+    System.out.println("Producto a eliminar: " + productoAEliminar.getNombre());
+    productos.remove(productoAEliminar);
+
+    System.out.printf("El producto %s se borro", productoAEliminar.getNombre());
+    System.out.println();
+  }
 
 
     public static ArrayList<Producto> obtenerProductosTecnologicos() {
