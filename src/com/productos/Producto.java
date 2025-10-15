@@ -1,3 +1,5 @@
+package com.productos;
+
 public class Producto {
 
   private String nombre;
@@ -13,7 +15,7 @@ public class Producto {
     this.precio = precio;
     this.stock = stock;
   }
-/*getters*/
+  /*getters*/
   public String getNombre() {
     return this.nombre;
   }

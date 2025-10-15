@@ -1,3 +1,5 @@
+package com.productos;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -32,9 +34,8 @@ public class GestorDeProductos {
     if (productos == null || productos.isEmpty()) {
       System.out.println("⚠️  No hay productos para mostrar.");
     } else {
-      int contador = 1;
       for (Producto producto : productos) {
-        System.out.printf(" %2d. %s%n", contador++, producto.getNombre());
+        System.out.printf(" %2d. %s%n", producto.getId(), producto.getNombre());
       }
     }
     System.out.println("=======================================");
@@ -113,7 +114,6 @@ public class GestorDeProductos {
     for (int i = 0; i < 20; ++i) {
       System.out.println();
     }
-    // TODO: limpiar la pantalla de la consola
   }
 
   public static boolean estaIncluido(Producto producto, String nombreParcial) {

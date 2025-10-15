@@ -1,3 +1,6 @@
+package com.pedido;
+import com.productos.Producto;
+
 public class LineaPedido {
 
   private Producto producto;

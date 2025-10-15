@@ -1,3 +1,5 @@
+package com.pedido;
+import com.productos.Producto;
 import java.util.ArrayList;
 
 public class Pedido {

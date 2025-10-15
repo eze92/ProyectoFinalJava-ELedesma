@@ -1,6 +1,10 @@
+package com.main;
+
+import com.productos.GestorDeProductos;
+import com.productos.Producto;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
+
 
 public class Main {
 
