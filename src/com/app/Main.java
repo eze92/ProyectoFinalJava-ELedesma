@@ -1,4 +1,4 @@
-package com.main;
+package com.app;
 
 import com.productos.GestorDeProductos;
 import com.productos.Producto;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static void main(String[] args)  {
     Scanner entrada = new Scanner(System.in);
     ArrayList<Producto> productosDB = obtenerProductosTecnologicos();
     GestorDeProductos gestor = new GestorDeProductos();
@@ -24,7 +24,7 @@ public class Main {
           1 - Crea un Producto
           2 - Listar Productos
           3 - Búsqueda por nombre
-          4 - Editar nombre producto
+          4 - Editar nombre y precio producto
           5 - Borrar producto
           6 - Crear pedido (en progreso)
           7 - Listar pedidos (en progreso)

@@ -56,7 +56,7 @@ public class GestorDeProductos {
     listarProductos(productoEncontrados);
   }
 
-  public static void editarProducto(ArrayList<Producto> productos) {
+  public static void editarProducto(ArrayList<Producto> productos)  {
     Scanner entrada = new Scanner(System.in);
     System.out.print("Ingrese el nombre o parte del nombre del producto a editar: ");
     int idProducto = obtenerIdProducto(productos);
@@ -80,7 +80,18 @@ public class GestorDeProductos {
 
     productoAEditar.setNombre(nuevoNombre);
 
-    System.out.printf("El nombre del producto cambió de %s a %s%n", productoAEditar.getNombre(), nuevoNombre);
+    System.out.println("Ingrese el nuevo precio: ");
+    double nuevoPrecio = entrada.nextDouble();
+    try{
+      productoAEditar.setPrecio(nuevoPrecio);
+      System.out.println("Precio actualizado correctamente.");
+    }
+    catch (IllegalArgumentException e){
+      System.out.println("Error: " + e.getMessage());
+      return;
+    }
+    System.out.printf("El nombre del producto cambió de %s a %s%n con precio %s%n", productoAEditar.getNombre(), nuevoNombre
+    , productoAEditar.getPrecio(), nuevoPrecio);
   }
 
   public static void borrarProducto(ArrayList<Producto> productos) {

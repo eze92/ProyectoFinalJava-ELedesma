@@ -33,7 +33,10 @@ public class Producto {
     this.nombre = nombre;
   }
 
-  public void setPrecio(double precio) {
+  public void setPrecio(double precio)  {
+    if (precio <= 0) {
+      throw new IllegalArgumentException("El precio no puede ser cero o negativo");
+    }
     this.precio = precio;
   }
 
