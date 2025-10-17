@@ -13,13 +13,6 @@ Aplicación Java orientada a objetos que simula un sistema básico de gestión d
 3. Al iniciar, se precargan 10 productos tecnológicos.
 4. Navegar por el menú interactivo con opciones numéricas.
 
-
-## 🚀 Ejecución
-
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/tu-usuario/ecommerce-console-app.git
-
 🧩 Funcionalidades implementadas
 - ✅ Crear producto con nombre, precio y stock.
 - ✅ Listar productos disponibles.
