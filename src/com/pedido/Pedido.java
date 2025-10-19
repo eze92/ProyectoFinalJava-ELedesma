@@ -3,7 +3,6 @@ import com.productos.Producto;
 import java.util.ArrayList;
 
 public class Pedido {
-  private int id;
   private ArrayList<Producto> productos;
 
   public Pedido(int id, ArrayList<Producto> productos) {
