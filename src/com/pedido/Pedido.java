@@ -1,36 +1,33 @@
 package com.pedido;
-import com.productos.Producto;
 import java.util.ArrayList;
 
 public class Pedido {
-  private ArrayList<Producto> productos;
+  private ArrayList<ProductoCarrito> productos;
 
-  public Pedido(int id, ArrayList<Producto> productos) {
-    this.id = id;
-    this.productos = productos;
+  public Pedido() {
+    productos = new ArrayList<>();
   }
-  public ArrayList<Producto> getProductos() {
-    return productos;
+
+  public void agregarProducto(ProductoCarrito producto) {
+    productos.add(producto);
   }
-  public double costoTotal(ArrayList<Producto> productos){
+
+  public double calcularPrecioTotal() {
+    if (productos.isEmpty()) {
+      return 0;
+    }
+
     double total = 0;
-    for (Producto producto : productos) {
+    for (ProductoCarrito producto : productos) {
       total += producto.getPrecio();
     }
     return total;
   }
-  public int disminuirStock(int idProducto, int cantidad) {
-    for (Producto producto : productos) {
-      if (producto.getId() == idProducto) {
-        int stockActual = producto.getStock();
-        if (stockActual >= cantidad) {
-          producto.setStock(stockActual - cantidad);
-          return 1; // Éxito
-        } else {
-          return -1; // No hay suficiente stock
-        }
-      }
+
+  public void listarProductos() {
+    for (ProductoCarrito producto : productos) {
+      System.out.println(producto.getNombre());
     }
-    return 0; // Producto no encontrado
   }
+
 }
