@@ -26,9 +26,10 @@ public class Main {
           3 - Búsqueda por nombre
           4 - Editar nombre del producto
           5 - Editar precio del producto
-          6 - Borrar producto
-          7 - Crear pedido (en progreso)
-          8 - Listar pedidos (en progreso)
+          6 - Editar stock del producto
+          7 - Borrar producto
+          8 - Crear pedido (en progreso)
+          9 - Listar pedidos (en progreso)
           """);
       opcionUsuario = entrada.nextInt();
 
@@ -38,7 +39,8 @@ public class Main {
         case 3 -> gestor.buscarProductoPorNombre(productosDB);
         case 4 -> gestor.editarProducto(productosDB);
         case 5 -> gestor.editarPrecioProducto(productosDB);
-        case 6 -> gestor.borrarProducto(productosDB);
+        case 6 -> gestor.editarStockProducto(productosDB);
+        case 7 -> gestor.borrarProducto(productosDB);
         /*case 6 -> System.out.println("Funcionalida en progreso...");*/
         case 0 -> {
           System.out.println("Gracias por usar la app!");
