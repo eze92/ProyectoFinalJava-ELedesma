@@ -35,7 +35,7 @@ public class GestorDeProductos {
       System.out.println("⚠️  No hay productos para mostrar.");
     } else {
       for (Producto producto : productos) {
-        System.out.printf(" %2d. %s%n", producto.getId(), producto.getNombre());
+        System.out.printf("%2d. %-20s $%.2f%n", producto.getId(), producto.getNombre(), producto.getPrecio());
       }
     }
     System.out.println("=======================================");
@@ -80,7 +80,7 @@ public class GestorDeProductos {
 
     productoAEditar.setNombre(nuevoNombre);
 
-    System.out.println("Ingrese el nuevo precio: ");
+    /*System.out.println("Ingrese el nuevo precio: ");
     double nuevoPrecio = entrada.nextDouble();
     try{
       productoAEditar.setPrecio(nuevoPrecio);
@@ -92,6 +92,41 @@ public class GestorDeProductos {
     }
     System.out.printf("El nombre del producto cambió de %s a %s%n con precio %s%n", productoAEditar.getNombre(), nuevoNombre
     , productoAEditar.getPrecio(), nuevoPrecio);
+     */
+    System.out.printf("El nombre del producto cambió de %s a %s%n", productoAEditar.getNombre(), nuevoNombre);
+  }
+
+  public static void editarPrecioProducto(ArrayList<Producto> productos)  {
+    Scanner entrada = new Scanner(System.in);
+    System.out.print("Ingrese el nombre o parte del nombre del producto a editar el precio: ");
+    int idProducto = obtenerIdProducto(productos);
+
+    Producto productoAEditar = null;
+    for (Producto producto : productos) {
+      if (producto.getId() == idProducto) {
+        productoAEditar = producto;
+        break;
+      }
+    }
+
+    if (productoAEditar == null) {
+      System.out.println("❌ Producto no encontrado.");
+      return;
+    }
+
+    System.out.println("Producto a editar: " + productoAEditar.getNombre());
+
+    System.out.println("Ingrese el nuevo precio: ");
+    double nuevoPrecio = entrada.nextDouble();
+    try{
+      productoAEditar.setPrecio(nuevoPrecio);
+      System.out.println("Precio actualizado correctamente.");
+    }
+    catch (IllegalArgumentException e){
+      System.out.println("Error: " + e.getMessage());
+      return;
+    }
+    System.out.printf("El precio del producto cambió  a  %s%n", productoAEditar.getPrecio(), nuevoPrecio);
   }
 
   public static void borrarProducto(ArrayList<Producto> productos) {
