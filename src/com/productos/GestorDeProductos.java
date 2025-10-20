@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class GestorDeProductos {
 
+  public static final Scanner entrada = new Scanner(System.in);
+
   public static void crearProducto(ArrayList<Producto> productos) {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.println("Creando Nuevo Producto");
     System.out.print("Ingrese el nombre del nuevo producto: ");
     String nombre = entrada.nextLine();
@@ -44,7 +46,7 @@ public class GestorDeProductos {
   }
 
   public static void buscarProductoPorNombre(ArrayList<Producto> productos) {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.println("Ingrese un nombre de un producto: ");
     String busqueda = entrada.nextLine();
     ArrayList<Producto> productoEncontrados = new ArrayList<>();
@@ -57,8 +59,8 @@ public class GestorDeProductos {
     listarProductos(productoEncontrados);
   }
 
-  public static void editarProducto(ArrayList<Producto> productos)  {
-    Scanner entrada = new Scanner(System.in);
+  public static void editarNombreProducto(ArrayList<Producto> productos)  {
+
     System.out.print("Ingrese el nombre o parte del nombre del producto a editar: ");
     int idProducto = obtenerIdProducto(productos);
 
@@ -79,12 +81,19 @@ public class GestorDeProductos {
     System.out.print("Ingrese el nuevo nombre: ");
     String nuevoNombre = entrada.nextLine();
 
-    productoAEditar.setNombre(nuevoNombre);
+    try{
+      productoAEditar.setNombre(nuevoNombre);
+      System.out.println("Se cambio el nombre correctamente.");
+    }
+    catch (IllegalArgumentException e){
+      System.out.println("Error: " + e.getMessage());
+      return;
+    }
     System.out.printf("El nombre del producto cambió de %s a %s%n", productoAEditar.getNombre(), nuevoNombre);
   }
 
   public static void editarPrecioProducto(ArrayList<Producto> productos)  {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.print("Ingrese el nombre o parte del nombre del producto a editar el precio: ");
     int idProducto = obtenerIdProducto(productos);
 
@@ -117,7 +126,7 @@ public class GestorDeProductos {
   }
 
   public static void editarStockProducto(ArrayList<Producto> productos)  {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.print("Ingrese el nombre o parte del nombre del producto a editar el precio: ");
     int idProducto = obtenerIdProducto(productos);
 
@@ -150,7 +159,7 @@ public class GestorDeProductos {
   }
 
   public static void borrarProducto(ArrayList<Producto> productos) {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.print("Ingrese el nombre o parte del nombre del producto a eliminar: ");
     int idProducto = obtenerIdProducto(productos);
 
@@ -172,9 +181,10 @@ public class GestorDeProductos {
     System.out.printf("El producto %s se borro", productoAEliminar.getNombre());
     System.out.println();
   }
+
   /*utilidades*/
   public static void pausa() {
-    Scanner entrada = new Scanner(System.in);
+
     System.out.println("Pulse ENTER para continuar...");
     entrada.nextLine();
     for (int i = 0; i < 20; ++i) {
@@ -192,7 +202,7 @@ public class GestorDeProductos {
 
   /* Busqueda por id */
   public static int obtenerIdProducto(List<Producto> productos) {
-    Scanner entrada = new Scanner(System.in);
+
     int idProducto = -1; // el -1 representa que no encontramos el producto
     String busqueda = entrada.nextLine();
 
@@ -201,7 +211,6 @@ public class GestorDeProductos {
         return producto.getId();
       }
     }
-
     return idProducto;
   }
 }

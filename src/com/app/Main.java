@@ -37,7 +37,7 @@ public class Main {
         case 1 -> gestor.crearProducto(productosDB); // - >
         case 2 -> gestor.listarProductos(productosDB);
         case 3 -> gestor.buscarProductoPorNombre(productosDB);
-        case 4 -> gestor.editarProducto(productosDB);
+        case 4 -> gestor.editarNombreProducto(productosDB);
         case 5 -> gestor.editarPrecioProducto(productosDB);
         case 6 -> gestor.editarStockProducto(productosDB);
         case 7 -> gestor.borrarProducto(productosDB);
